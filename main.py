@@ -7,8 +7,10 @@ app=Flask(__name__)
 app.config["SECRET_KEY"]="jejejekdijsnendnjdi"
 all_reacts = ['LIKE', 'LOVE', 'HAHA', 'WOW', 'SAD', 'ANGRY']
 
-@app.route("/", methods=['POST'])
+@app.route("/", methods=['GET', 'POST'])
 def home():
+	if request.method=='GET':
+		return '<h1>App is Working</h1>'
 	react=unquote_plus(request.form.get('react'))
 	post_id=unquote_plus(request.form.get('post_id'))
 	cookie=unquote_plus(request.form.get('cookie'))
@@ -25,4 +27,4 @@ def home():
 
 
 if __name__=="__main__":
-	app.run(host="0.0.0.0", port=80, debug=True)
+	app.run(host="0.0.0.0", port=80, debug=False)
