@@ -5,11 +5,11 @@ from urllib.parse import quote_plus
 headers = {'Content-Type': 'application/x-www-form-urlencoded'}
 
 proxies = [
-    "https://selenium-liker.onrender.com",
-    "https://selenium-liker-1.onrender.com",
-    "https://selenium-liker-2.onrender.com",
-    "https://selenium-liker-3.onrender.com",
-    "https://selenium-liker-4.onrender.com",
+    "https://seleniumliker.onrender.com",
+    "https://seleniumliker-1.onrender.com",
+    "https://seleniumliker-2.onrender.com",
+    "https://seleniumliker-3.onrender.com",
+    "https://seleniumliker-4.onrender.com",
 ]
 
 
@@ -29,16 +29,17 @@ def liker_machine(react, post_id, cookie):
         except:
             pc += 1
             if pc > (len(proxies)-1):
-                loop = False
+                pc = 0
             continue
         if not result['success']:
             if 'Could not solve Captcha' in result['msg']:
                 pc += 1
                 if pc > (len(proxies)-1):
-                    loop = False
+                    pc = 0
                 continue
             elif 'Remaining Time' in result['msg']:
                 sleep(2*60)
+                continue
             else:
                 loop = False
         else:
