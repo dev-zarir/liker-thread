@@ -10,7 +10,7 @@ all_reacts = ['LIKE', 'LOVE', 'HAHA', 'WOW', 'SAD', 'ANGRY']
 @app.route("/", methods=['GET', 'POST'])
 def home():
 	if request.method=='GET':
-		return '<h1>App is Working</h1>'
+		return '<h1>App is Working V2.1</h1>'
 	react=unquote_plus(request.form.get('react'))
 	post_id=unquote_plus(request.form.get('post_id'))
 	cookie=unquote_plus(request.form.get('cookie'))
